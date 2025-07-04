@@ -1,0 +1,33 @@
+[log]
+path_templates = [
+    "/tmp/nginx-access-{{placeholder|:|get_time|:|%y%m%d|:|-86400000}}.log",
+    "/tmp/nginx-access-{{placeholder|:|get_time|:|%y%m%d}}.log"
+]
+pattern = '^(\S+) - - \[([^\]]+)\] "([A-Z]+) (?P<path>[^ ?"]+)[^"]*" (?P<status>\d{3}) (\d+) "([^"]*)" "([^"]*)" "([^"]*)" *rt=(?P<rt>\d+\.\d+) uct=(?:-|\d+\.\d+) urt=(?:-|\d+\.\d+)$'
+
+[mail]
+recipients = ["xxxxx@gmail.com"]
+sender = "xxxxx@163.com"
+password = "xxxxx"
+title = "{{placeholder|:|simple_mapping|:|title_prefix}}-{{placeholder|:|get_time|:|%Y%m%d}}"
+content = """
+检测时间：{{placeholder|:|get_time|:|%Y-%m-%d %H:%M:%S}}
+
+
+## Nginx 日志分析结果
+
+{{placeholder|:|simple_mapping|:|get_analysis_results_detail_markdown_cn}}
+
+
+
+## 汇总统计
+
+{{placeholder|:|simple_mapping|:|get_analysis_results_summary_markdown_cn}}
+
+"""
+
+[mail.smtp]
+host = "smtp.163.com"
+
+[placeholder]
+title_prefix = "性能&&可用性分析报告"

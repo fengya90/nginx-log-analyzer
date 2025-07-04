@@ -1,0 +1,24 @@
+[package]
+name = "nginx-log-analyzer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+config = "0.15.11"
+serde = { version = "1.0.219", features = ["derive"] }
+clap = { version = "4.5.40", features = ["derive"] }
+chrono = { version = "0.4", features = ["serde"] }
+regex = "1.11.1"
+pulldown-cmark = "0.13.0"
+hdrhistogram = "7.5.4"
+lettre = { version = "0.11", default-features = false, features = ["smtp-transport", "builder", "rustls-tls"] }
+
+
+
+
+
+
+
+
+
+
